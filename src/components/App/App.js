@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Statistics from "../Statistics/Statistics";
-import FeedbackOptions from "../FeedbackOptions/FeedbackOptions";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 class App extends Component {
   state = {
@@ -35,13 +34,11 @@ class App extends Component {
 
     return (
       <>
-        <h2>Please Leave Feedback</h2>
-        <FeedbackOptions feedBack={this.getFeedback} />
-        <h3>Statistics</h3>
-        <Statistics
+        <SectionTitle
           good={good}
           neutral={neutral}
           bad={bad}
+          feedBack={this.getFeedback}
           total={total}
           positivePercentage={positivePercentage}
         />
