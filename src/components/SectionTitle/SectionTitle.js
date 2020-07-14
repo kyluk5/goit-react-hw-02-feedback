@@ -1,7 +1,7 @@
 import React from "react";
 
 const SectionTitle = () => {
-  return <div></div>;
+  return <section>x</section>;
 };
 
 export default SectionTitle;

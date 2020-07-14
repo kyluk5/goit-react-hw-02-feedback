@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Statistics from "../Statistics/Statistics";
+import FeedbackOptions from "../FeedbackOptions/FeedbackOptions";
 
 class App extends Component {
   state = {
@@ -6,24 +8,11 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  goodFeedback = () => {
+  getFeedback = (e) => {
+    e.persist();
     this.setState((prevState) => {
       return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-  neutralFeedback = () => {
-    this.setState((prevState) => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-  badFeedback = () => {
-    this.setState((prevState) => {
-      return {
-        bad: prevState.bad + 1,
+        [e.target.name]: prevState[e.target.name] + 1,
       };
     });
   };
@@ -47,15 +36,15 @@ class App extends Component {
     return (
       <>
         <h2>Please Leave Feedback</h2>
-        <button onClick={this.goodFeedback}>Good</button>
-        <button onClick={this.neutralFeedback}>Neutral</button>
-        <button onClick={this.badFeedback}>Bad</button>
+        <FeedbackOptions feedBack={this.getFeedback} />
         <h3>Statistics</h3>
-        <p>Good:{good}</p>
-        <p>Neutral:{neutral}</p>
-        <p>Bad:{bad}</p>
-        <p>Total:{total}</p>
-        <p>Positive Feedback:{positivePercentage}%</p>
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={total}
+          positivePercentage={positivePercentage}
+        />
       </>
     );
   }
